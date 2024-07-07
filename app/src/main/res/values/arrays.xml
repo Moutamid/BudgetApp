@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="currency_array">
+        <item>USD</item>
+        <item>EUR</item>
+        <item>GBP</item>
+        <item>INR</item>
+        <item>JPY</item>
+        <!-- Add more currencies as needed -->
+    </string-array>
+    <string-array name="expense_category_array">
+        <item>Select Any</item>
+        <item>Food</item>
+        <item>Transport</item>
+        <item>Shopping</item>
+        <item>Entertainment</item>
+        <item>Bills</item>
+        <item>Health</item>
+        <item>Education</item>
+        <item>Rent</item>
+        <item>Travel</item>
+        <item>Miscellaneous</item>
+    </string-array>
+    <string-array name="income_source_array">
+        <item>Select Any</item>
+
+        <item>Salary</item>
+        <item>Business</item>
+        <item>Freelance</item>
+        <item>Investments</item>
+        <item>Rent</item>
+        <item>Gifts</item>
+        <item>Other</item>
+    </string-array>
+</resources>
