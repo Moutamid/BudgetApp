@@ -2,6 +2,7 @@ package com.moutamid.budgetmanagementapp.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -16,4 +17,9 @@ public class SecurityActivity extends AppCompatActivity {
     }
     public void back(View view) {
         onBackPressed();
-    }}
+    }
+
+    public void setPin(View view) {
+        startActivity(new Intent(this, SetPinActivity.class));
+    }
+}

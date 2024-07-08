@@ -1,6 +1,9 @@
 package com.moutamid.budgetmanagementapp.authetications;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
+import android.icu.lang.UCharacter;
 import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -23,24 +26,28 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.moutamid.budgetmanagementapp.MainActivity;
 import com.moutamid.budgetmanagementapp.R;
 
+import java.util.Objects;
+
 public class SignupActivity extends AppCompatActivity {
 
-//    private EditText inputEmail, inputPassword, inputName;
-//    private Button btnSignUp;
+    private EditText inputEmail, inputPassword, inputName;
+    private Button btnSignUp;
     private TextView btnSignIn;
-//    private FirebaseAuth auth;
+    private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(com.moutamid.budgetmanagementapp.R.layout.activity_signup);
-//        LinearLayout main_layout = findViewById(R.id.main_layout);
-//        //Get Firebase auth instance
-//        auth = FirebaseAuth.getInstance();
+
+        auth = FirebaseAuth.getInstance();
         CheckBox textViewTerms = findViewById(R.id.textView_terms);
 
         String text = "I carefully read all terms and conditions and accept it";
@@ -64,23 +71,23 @@ public class SignupActivity extends AppCompatActivity {
         spannableString.setSpan(underlineSpan, start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         textViewTerms.setText(spannableString);
         textViewTerms.setMovementMethod(LinkMovementMethod.getInstance()); // This is important for the link to be clickable
-//        inputName = (EditText)findViewById(R.id.name);
+        inputName = (EditText)findViewById(R.id.name);
 
         btnSignIn = (TextView)
 
                 findViewById(R.id.btnSignIn);
 //
-//        btnSignUp = (Button)
-//
-//                findViewById(R.id.sign_up_button);
+        btnSignUp = (Button)
 
-//        inputEmail = (EditText)
-//
-//                findViewById(R.id.email);
-//
-//        inputPassword = (EditText)
-//
-//                findViewById(R.id.password);
+                findViewById(R.id.sign_up_button);
+
+        inputEmail = (EditText)
+
+                findViewById(R.id.email);
+
+        inputPassword = (EditText)
+
+                findViewById(R.id.password);
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,60 +95,60 @@ public class SignupActivity extends AppCompatActivity {
             }
         });
 
-//        btnSignUp.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                String email = inputEmail.getText().toString().trim();
-//                String password = inputPassword.getText().toString().trim();
-//                String name = inputName.getText().toString().trim();
-//
-//                if (TextUtils.isEmpty(name)) {
-//                    show_toast("Enter name", 0);
-//                    return;
-//                }
-//                if (TextUtils.isEmpty(email)) {
-//                    show_toast("Enter email address!", 0);
-//                    return;
-//                }
-//
-//                if (TextUtils.isEmpty(password)) {
-//                    show_toast("Enter password!", 0);
-//                    return;
-//                }
-//
-//
-//                if (password.length() < 6) {
-//                    show_toast("Password too short, enter minimum 6 characters!", 0);
-//                    return;
-//                }
-//
+        btnSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-////                progressBar.setVisibility(View.VISIBLE);
-//                Dialog lodingbar = new Dialog(SignupActivity.this);
-//                lodingbar.setContentView(R.layout.loading);
-//                Objects.requireNonNull(lodingbar.getWindow()).setBackgroundDrawable(new ColorDrawable(UCharacter.JoiningType.TRANSPARENT));
-//                lodingbar.setCancelable(false);
-//                lodingbar.show();
-//
-//                //create user
-//                auth.createUserWithEmailAndPassword(email, password)
-//                        .addOnCompleteListener(SignupActivity.this, new OnCompleteListener<AuthResult>() {
-//                            @Override
-//                            public void onComplete(@NonNull Task<AuthResult> task) {
-//                                if (!task.isSuccessful()) {
-//                                    show_toast("Authentication failed." + task.getException(), 0);
-//                                } else {
-//                startActivity(new Intent(SignupActivity.this, MainActivity.class));
-//                finishAffinity();
+                String email = inputEmail.getText().toString().trim();
+                String password = inputPassword.getText().toString().trim();
+                String name = inputName.getText().toString().trim();
+
+                if (TextUtils.isEmpty(name)) {
+                    show_toast("Enter name", 0);
+                    return;
+                }
+                if (TextUtils.isEmpty(email)) {
+                    show_toast("Enter email address!", 0);
+                    return;
+                }
+
+                if (TextUtils.isEmpty(password)) {
+                    show_toast("Enter password!", 0);
+                    return;
+                }
 
 
-//                                }
-//                            }
-//                        });
+                if (password.length() < 6) {
+                    show_toast("Password too short, enter minimum 6 characters!", 0);
+                    return;
+                }
 
-//            }
-//        });
+
+//                progressBar.setVisibility(View.VISIBLE);
+                Dialog lodingbar = new Dialog(SignupActivity.this);
+                lodingbar.setContentView(R.layout.loading);
+                Objects.requireNonNull(lodingbar.getWindow()).setBackgroundDrawable(new ColorDrawable(UCharacter.JoiningType.TRANSPARENT));
+                lodingbar.setCancelable(false);
+                lodingbar.show();
+
+                //create user
+                auth.createUserWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(SignupActivity.this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (!task.isSuccessful()) {
+                                    show_toast("Authentication failed." + task.getException(), 0);
+                                } else {
+                startActivity(new Intent(SignupActivity.this, MainActivity.class));
+                finishAffinity();
+
+
+                                }
+                            }
+                        });
+
+            }
+        });
     }
 
     @Override

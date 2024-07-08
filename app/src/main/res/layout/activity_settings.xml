@@ -63,7 +63,6 @@
             android:textColor="@color/white"
             android:textSize="@dimen/_16sdp" />
 
-
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
