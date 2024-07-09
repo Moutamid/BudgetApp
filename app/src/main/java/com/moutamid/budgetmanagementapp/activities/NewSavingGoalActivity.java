@@ -19,6 +19,7 @@ public class NewSavingGoalActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_new_saving_goal);
         editTextGoalName = findViewById(R.id.editTextGoalName);
         editTextTimeOfAchievement = findViewById(R.id.editTextTimeOfAchievement);

@@ -21,6 +21,7 @@ public class SetPinActivity extends AppCompatActivity {
         setContentView(R.layout.activity_set_pin);
         pinInput = findViewById(R.id.pin_edit);
         savePinButton = findViewById(R.id.save_pin_button);
+
         savePinButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
