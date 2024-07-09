@@ -364,6 +364,7 @@
                     android:layout_marginTop="@dimen/_10sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:layout_weight="1"
+                    android:onClick="planned_payment"
                     app:cardBackgroundColor="#D8D8D8"
                     app:cardCornerRadius="12dp"
                     app:cardElevation="@dimen/_3sdp">

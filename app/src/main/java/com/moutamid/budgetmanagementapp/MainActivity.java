@@ -20,6 +20,7 @@ import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.moutamid.AddIncomeActivity;
 import com.moutamid.budgetmanagementapp.activities.AddWalletScreen;
+import com.moutamid.budgetmanagementapp.activities.PlannedPaymentActivity;
 import com.moutamid.budgetmanagementapp.activities.UserActivity;
 import com.moutamid.budgetmanagementapp.adapter.SlideAdapter;
 import com.moutamid.budgetmanagementapp.adapter.SliderModel;
@@ -178,6 +179,9 @@ public class MainActivity extends AppCompatActivity {
 
     } public void expenses(View view) {
         startActivity(new Intent(this, AddExpenseActivity.class));
+
+    } public void planned_payment(View view) {
+        startActivity(new Intent(this, PlannedPaymentActivity.class));
 
     }
 }
