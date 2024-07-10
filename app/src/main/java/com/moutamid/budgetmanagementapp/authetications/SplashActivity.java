@@ -31,35 +31,35 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        BiometricManager biometricManager = BiometricManager.from(this);
-        switch (biometricManager.canAuthenticate()) {
-            case BiometricManager.BIOMETRIC_SUCCESS:
-                showBiometricPrompt();
-                break;
-            case BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE:
-                // Handle case where no biometric hardware is present
-                break;
-            case BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE:
-                // Handle case where biometric hardware is unavailable
-                break;
-            case BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED:
-                // Handle case where no biometrics are enrolled
-                break;
-        }
-        ImageView textView = findViewById(R.id.imageView2);
+//        BiometricManager biometricManager = BiometricManager.from(this);
+//        switch (biometricManager.canAuthenticate()) {
+//            case BiometricManager.BIOMETRIC_SUCCESS:
+//                showBiometricPrompt();
+//                break;
+//            case BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE:
+//                // Handle case where no biometric hardware is present
+//                break;
+//            case BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE:
+//                // Handle case where biometric hardware is unavailable
+//                break;
+//            case BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED:
+//                // Handle case where no biometrics are enrolled
+//                break;
+//        }
+//        ImageView textView = findViewById(R.id.imageView2);
+//
+//        Animation zoomOut = AnimationUtils.loadAnimation(this, R.anim.zoom_out);
+//        textView.startAnimation(zoomOut);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
 
-        Animation zoomOut = AnimationUtils.loadAnimation(this, R.anim.zoom_out);
-        textView.startAnimation(zoomOut);
-//        new Handler().postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//
-//                Intent i = new Intent(SplashActivity.this, SliderActivity.class);
-//                startActivity(i);
-//                finish();
-//
-//            }
-//        },DELAY_TIME);
+                Intent i = new Intent(SplashActivity.this, SliderActivity.class);
+                startActivity(i);
+                finish();
+
+            }
+        },DELAY_TIME);
     }
 
     private void showBiometricPrompt() {

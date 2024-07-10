@@ -14,26 +14,21 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:layout_marginStart="@dimen/_20sdp"
         android:layout_marginTop="@dimen/_140sdp"
         android:layout_marginEnd="@dimen/_20sdp"
         android:layout_marginBottom="@dimen/_20sdp">
 
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-
             android:layout_gravity="center"
             android:fontFamily="@font/inter_extra_bold"
             android:text="Login"
             android:textColor="@color/white"
             android:textSize="35dp"
             android:textStyle="bold" />
-
-
     </RelativeLayout>
 
     <LinearLayout
@@ -43,7 +38,6 @@
         android:layout_below="@+id/toolbar"
         android:orientation="vertical"
         android:padding="@dimen/activity_horizontal_margin">
-
 
         <EditText
             android:id="@+id/email"
@@ -90,10 +84,11 @@
             android:buttonTint="@color/white"
             android:text="Stay connected"
             android:textColor="@color/white" />
+
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnLogin"
             android:layout_width="fill_parent"
             android:layout_height="45dp"
-            android:layout_above="@+id/sign_up_button"
             android:layout_marginStart="30dp"
             android:layout_marginTop="75dp"
             android:layout_marginEnd="30dp"
@@ -107,7 +102,6 @@
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="fill_parent"
             android:layout_height="45dp"
-            android:layout_above="@+id/btnReset"
             android:layout_marginStart="30dp"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="30dp"
@@ -115,7 +109,6 @@
             android:fontFamily="@font/inter_medium"
             android:text="Continue as Guest"
             android:onClick="guest"
-
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="14dp" />

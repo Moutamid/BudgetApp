@@ -33,20 +33,20 @@ public class LoginActivity extends AppCompatActivity {
     private EditText inputEmail, inputPassword;
     private FirebaseAuth auth;
     private TextView btnSignup;
-    Button btnLogin;
-
+    private Button btnLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         FirebaseApp.initializeApp(LoginActivity.this);
         auth = FirebaseAuth.getInstance();
-        setContentView(com.moutamid.budgetmanagementapp.R.layout.activity_login);
-        inputEmail = (EditText) findViewById(R.id.email);
-        inputPassword = (EditText) findViewById(R.id.password);
-        btnSignup = (TextView) findViewById(R.id.btnSignup);
-        btnLogin = (Button) findViewById(R.id.sign_up_button);
-        auth = FirebaseAuth.getInstance();
+        setContentView(R.layout.activity_login);
+       inputEmail = findViewById(R.id.email);
+        inputPassword = findViewById(R.id.password);
+        btnSignup = findViewById(R.id.btnSignup);
+        btnLogin = findViewById(R.id.btnLogin);
+
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,12 +54,11 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-//
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = inputEmail.getText().toString();
-                final String password = inputPassword.getText().toString();
+                String email = inputEmail.getText().toString().trim();
+                final String password = inputPassword.getText().toString().trim();
 
                 if (TextUtils.isEmpty(email)) {
                     show_toast("Email address is not yet provided", 0);
@@ -68,38 +67,33 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (TextUtils.isEmpty(password)) {
                     show_toast("Password is not yet provided", 0);
-
                     return;
                 }
 
-
-                //authenticate user
+                // Authenticate user
                 auth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-
                                 if (!task.isSuccessful()) {
-                                    // there was an error
+                                    // There was an error
                                     if (password.length() < 6) {
                                         show_toast(getString(R.string.minimum_password), 0);
-
                                     } else {
                                         show_toast(getString(R.string.auth_failed), 0);
-
                                     }
                                 } else {
-                                    Dialog lodingbar = new Dialog(LoginActivity.this);
-                                    lodingbar.setContentView(R.layout.loading);
-                                    Objects.requireNonNull(lodingbar.getWindow()).setBackgroundDrawable(new ColorDrawable(UCharacter.JoiningType.TRANSPARENT));
-                                    lodingbar.setCancelable(false);
-                                    lodingbar.show();
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
+                                    Dialog loadingBar = new Dialog(LoginActivity.this);
+                                    loadingBar.setContentView(R.layout.loading);
+                                    Objects.requireNonNull(loadingBar.getWindow()).setBackgroundDrawable(new ColorDrawable(UCharacter.JoiningType.TRANSPARENT));
+                                    loadingBar.setCancelable(false);
+                                    loadingBar.show();
+
+                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                    startActivity(intent);
+                                    finish();
                                 }
                             }
-
                         });
             }
         });
@@ -107,18 +101,17 @@ public class LoginActivity extends AppCompatActivity {
 
     public void show_toast(String message, int type) {
         LayoutInflater inflater = getLayoutInflater();
-
         View layout;
-        if (type == 0) {
-            layout = inflater.inflate(R.layout.toast_wrong,
-                    (ViewGroup) findViewById(R.id.toast_layout_root));
-        } else {
-            layout = inflater.inflate(R.layout.toast_right,
-                    (ViewGroup) findViewById(R.id.toast_layout_root));
 
+        if (type == 0) {
+            layout = inflater.inflate(R.layout.toast_wrong, (ViewGroup) findViewById(R.id.toast_layout_root));
+        } else {
+            layout = inflater.inflate(R.layout.toast_right, (ViewGroup) findViewById(R.id.toast_layout_root));
         }
-        TextView text = (TextView) layout.findViewById(R.id.text);
+
+        TextView text = layout.findViewById(R.id.text);
         text.setText(message);
+
         Toast toast = new Toast(getApplicationContext());
         toast.setGravity(Gravity.BOTTOM, 0, 10);
         toast.setDuration(Toast.LENGTH_SHORT);

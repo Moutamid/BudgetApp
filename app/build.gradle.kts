@@ -1,11 +1,13 @@
 plugins {
     id("com.android.application")
+    id("com.google.gms.google-services")
+    id("com.google.firebase.crashlytics")
+
 }
 
 android {
     namespace = "com.moutamid.budgetmanagementapp"
     compileSdk = 34
-
     defaultConfig {
         applicationId = "com.moutamid.budgetmanagementapp"
         minSdk = 24
@@ -40,12 +42,12 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.0")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.0")
-    implementation(platform("com.google.firebase:firebase-bom:32.2.3"))
+    implementation(platform("com.google.firebase:firebase-bom:33.1.1"))
     implementation("com.google.firebase:firebase-crashlytics")
     implementation("com.google.firebase:firebase-analytics")
-    implementation("com.google.firebase:firebase-database:19.4.0")
+    implementation("com.google.firebase:firebase-database:21.0.0")
     implementation("com.fxn769:stash:1.3.2")
-    implementation("com.google.firebase:firebase-auth:21.0.1")
+    implementation("com.google.firebase:firebase-auth:23.0.0")
     implementation("com.fxn769:stash:1.3.2")
     implementation("com.airbnb.android:lottie:3.4.0")
     implementation("com.github.smarteist:autoimageslider:1.3.9")

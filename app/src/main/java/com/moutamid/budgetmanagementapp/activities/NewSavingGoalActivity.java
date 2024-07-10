@@ -1,7 +1,5 @@
 package com.moutamid.budgetmanagementapp.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -10,28 +8,35 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.moutamid.budgetmanagementapp.R;
+import com.moutamid.budgetmanagementapp.model.SavingGoal;
 
 public class NewSavingGoalActivity extends AppCompatActivity {
-    private EditText editTextGoalName, editTextTimeOfAchievement, editTextNotificationTitle, editTextNotificationDescription;
+    private EditText editTextAmount, editTextSaved, editTextNote, editTextGoalName, editTextTimeOfAchievement, editTextNotificationTitle, editTextNotificationDescription;
     private Spinner spinnerPaymentOption;
     private Button buttonSaveGoal;
+
+    private DatabaseReference databaseReference;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_new_saving_goal);
+        databaseReference = FirebaseDatabase.getInstance().getReference("BudgetingApp").child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("SavingGoals");
+        editTextNote = findViewById(R.id.editTextNote);
+        editTextSaved = findViewById(R.id.editTextSaved);
+        editTextAmount = findViewById(R.id.editTextAmount);
         editTextGoalName = findViewById(R.id.editTextGoalName);
         editTextTimeOfAchievement = findViewById(R.id.editTextTimeOfAchievement);
         spinnerPaymentOption = findViewById(R.id.spinnerPaymentOption);
         editTextNotificationTitle = findViewById(R.id.editTextNotificationTitle);
         editTextNotificationDescription = findViewById(R.id.editTextNotificationDescription);
         buttonSaveGoal = findViewById(R.id.buttonSaveGoal);
-        String[] paymentOptions = {"Cash", "Card", "Bank Transfer"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, paymentOptions);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerPaymentOption.setAdapter(adapter);
-
         buttonSaveGoal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -39,26 +44,33 @@ public class NewSavingGoalActivity extends AppCompatActivity {
             }
         });
     }
+
     private void saveGoal() {
         String goalName = editTextGoalName.getText().toString().trim();
         String timeOfAchievement = editTextTimeOfAchievement.getText().toString().trim();
-        String paymentOption = spinnerPaymentOption.getSelectedItem().toString();
         String notificationTitle = editTextNotificationTitle.getText().toString().trim();
         String notificationDescription = editTextNotificationDescription.getText().toString().trim();
+        String savedAmount = editTextSaved.getText().toString().trim();
+        String note = editTextNote.getText().toString().trim();
+        String amount = editTextAmount.getText().toString().trim();
 
-        // Validate inputs
-        if (goalName.isEmpty() || timeOfAchievement.isEmpty() || notificationTitle.isEmpty() || notificationDescription.isEmpty()) {
+        if (savedAmount.isEmpty() || note.isEmpty() || amount.isEmpty() || goalName.isEmpty() || timeOfAchievement.isEmpty() || notificationTitle.isEmpty() || notificationDescription.isEmpty()) {
             Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Save the goal (this part depends on your implementation, e.g., saving to a database)
-        // Example:
-        // SavingGoal goal = new SavingGoal(goalName, timeOfAchievement, paymentOption, notificationTitle, notificationDescription);
-        // goal.save();
-
-        Toast.makeText(this, "Saving Goal Saved", Toast.LENGTH_SHORT).show();
-        finish(); // Close the activity
+        String goalId = databaseReference.push().getKey();
+        SavingGoal savingGoal = new SavingGoal(goalName, timeOfAchievement, notificationTitle, notificationDescription, Integer.valueOf(amount), Integer.valueOf(savedAmount), note);
+        assert goalId != null;
+        databaseReference.child(goalId).setValue(savingGoal)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(NewSavingGoalActivity.this, "Saving Goal Saved", Toast.LENGTH_SHORT).show();
+                        finish(); // Close the activity
+                    } else {
+                        Toast.makeText(NewSavingGoalActivity.this, "Failed to save goal. Please try again.", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
     public void back(View view) {
