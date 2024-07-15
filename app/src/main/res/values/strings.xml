@@ -7,5 +7,31 @@
     <string name="change_email">Change Email</string>
     <string name="change_password">Change Password</string>
     <string name="send_password_reset_email">Send Password reset email</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="help_content">
+    <![CDATA[
+    <b>Welcome to the Budget App Help Section!</b><br/><br/>
+
+    <b>Features and Tips:</b><br/>
+    1. <b>Adding Transactions:</b><br/>
+       - Navigate to the "Add Expense" or "Add Income" screen.<br/>
+       - Enter the amount, category, and description of the transaction.<br/><br/>
+
+    2. <b>Viewing Transactions:</b><br/>
+       - Use the transaction history to see detailed records of your expenses and income.<br/><br/>
+
+    3. <b>Setting Budgets:</b><br/>
+       - Go to the "Set Budget" screen to define monthly or weekly budgets for categories.<br/><br/>
+
+    4. <b>Analyzing Reports:</b><br/>
+       - Check the reports section to view graphical representations of your spending habits.<br/><br/>
+
+    For further assistance, contact our support team at <b>support@budgetapp.com</b>.<br/><br/>
+
+    Thank you for using Budget App!
+    ]]>
+</string>
+
 
 </resources>

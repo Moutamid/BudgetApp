@@ -1,5 +1,6 @@
 package com.moutamid.budgetmanagementapp.activities;
 
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.SharedPreferences;
@@ -18,6 +19,7 @@ public class SetPinActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_set_pin);
         pinInput = findViewById(R.id.pin_edit);
         savePinButton = findViewById(R.id.save_pin_button);

@@ -77,7 +77,7 @@
         android:text="Get Started"
         android:textAllCaps="false"
 
-        android:textColor="@color/white"
+            android:textColor="@color/black"
         android:visibility="gone" />
 
 </RelativeLayout>

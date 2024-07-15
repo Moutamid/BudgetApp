@@ -4,14 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/appColor"
     android:orientation="vertical"
+    android:background="@color/background"
     tools:context=".activities.SliderActivity">
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#A800183F" />
-<LinearLayout
+
+    <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -30,7 +27,7 @@
         android:layout_marginTop="@dimen/_40sdp"
         android:fontFamily="@font/inter_bold"
         android:gravity="center"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:text="Welcome to"
         android:textSize="@dimen/_26sdp" />
 
@@ -40,7 +37,7 @@
         android:layout_marginTop="@dimen/_2sdp"
         android:fontFamily="@font/inter_bold"
         android:gravity="center"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:text="Budgeting App"
         android:textSize="@dimen/_17sdp" />
 
@@ -60,7 +57,7 @@
         app:sliderIndicatorOrientation="horizontal"
         app:sliderIndicatorPadding="3dp"
         app:sliderIndicatorRadius="2dp"
-        app:sliderIndicatorSelectedColor="@color/white"
+        app:sliderIndicatorSelectedColor="@color/appColor"
         app:sliderIndicatorUnselectedColor="#D3D2D2"
         app:sliderScrollTimeInSec="1" />
 
@@ -79,7 +76,6 @@
         android:fontFamily="@font/inter_semi_bold"
         android:onClick="start"
         android:text="Start Now"
-        android:backgroundTint="#1F375E"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="14dp" />

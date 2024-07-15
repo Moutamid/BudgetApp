@@ -2,13 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/app_bg"
+    android:background="@color/background"
     android:orientation="vertical">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#A800183F" />
 
     <RelativeLayout
         android:id="@+id/toolbar"
@@ -26,7 +22,7 @@
             android:layout_gravity="center"
             android:fontFamily="@font/inter_extra_bold"
             android:text="Signup"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="35dp"
             android:textStyle="bold" />
 
@@ -108,9 +104,9 @@
                 android:layout_marginEnd="@dimen/_30sdp"
                 android:fontFamily="@font/inter_medium"
                 android:paddingStart="5dp"
-                android:buttonTint="@color/white"
+                android:buttonTint="@color/black"
                 android:text="I carefully read all terms and conditions and accept it"
-                android:textColor="@color/white" />
+                android:textColor="@color/black" />
 
             <CheckBox
                 android:layout_width="match_parent"
@@ -120,9 +116,9 @@
                 android:fontFamily="@font/inter_medium"
                 android:paddingStart="5dp"
                 android:layout_marginTop="-5dp"
-                android:buttonTint="@color/white"
+                android:buttonTint="@color/black"
                 android:text="Stay connected"
-                android:textColor="@color/white" />
+                android:textColor="@color/black" />
 
         </LinearLayout>
 
@@ -150,7 +146,7 @@
             android:fontFamily="@font/inter_medium"
             android:gravity="center"
             android:text="Already have an account? Login"
-            android:textColor="#EFEFEF"
+            android:textColor="#525252"
             android:textSize="@dimen/_12sdp" />
 
     </LinearLayout>

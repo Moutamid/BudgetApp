@@ -1,18 +1,21 @@
 package com.moutamid.budgetmanagementapp.adapter;
+
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import androidx.annotation.NonNull;
+
 import androidx.appcompat.widget.AppCompatButton;
-import androidx.cardview.widget.CardView;
 
 import com.moutamid.budgetmanagementapp.R;
+import com.moutamid.budgetmanagementapp.activities.AddGoalsActivity;
 import com.moutamid.budgetmanagementapp.activities.NewSavingGoalActivity;
 import com.smarteist.autoimageslider.SliderViewAdapter;
+
 import java.util.List;
 
 public class SlideAdapter extends SliderViewAdapter<SlideAdapter.SliderViewHolder> {
@@ -43,6 +46,12 @@ viewHolder.create_new_goal.setOnClickListener(new View.OnClickListener() {
         mContext.startActivity(new Intent(mContext, NewSavingGoalActivity.class));
     }
 });
+        viewHolder.add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mContext.startActivity(new Intent(mContext, AddGoalsActivity.class));
+            }
+        });
         // You can add click listeners or any other customization here if needed
     }
 
@@ -57,13 +66,14 @@ viewHolder.create_new_goal.setOnClickListener(new View.OnClickListener() {
         TextView textViewTitle;
         ProgressBar progressBar;
         AppCompatButton create_new_goal;
-
+        ImageView add;
         public SliderViewHolder(View itemView) {
             super(itemView);
             this.itemView = itemView;
             textViewTitle = itemView.findViewById(R.id.textViewTitle);
             progressBar = itemView.findViewById(R.id.progressBar);
             create_new_goal = itemView.findViewById(R.id.create_new_goal);
+            add = itemView.findViewById(R.id.add);
         }
     }
 }

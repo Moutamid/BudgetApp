@@ -1,5 +1,6 @@
 package com.moutamid.budgetmanagementapp.activities;
 
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -14,6 +15,8 @@ public class UserActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
+
         setContentView(R.layout.activity_user);
     }
 
@@ -31,8 +34,12 @@ public class UserActivity extends AppCompatActivity {
         startActivity(new Intent(this, PersonlizeMyApActivity.class));
 
     }
+public void help(View view) {
+        startActivity(new Intent(this, HelpActivity.class));
 
-    public void main(View view) {
+    }
+
+    public void back(View view) {
         startActivity(new Intent(this, MainActivity.class));
 finishAffinity();
 

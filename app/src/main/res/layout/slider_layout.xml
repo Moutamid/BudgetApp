@@ -30,6 +30,6 @@
         android:text="Hye, Welcome to"
         android:layout_marginStart="@dimen/_45sdp"
         android:layout_marginEnd="@dimen/_45sdp"
-        android:textColor="@color/white"
+            android:textColor="@color/black"
         android:textSize="@dimen/_14sdp" />
 </RelativeLayout>

@@ -34,6 +34,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.moutamid.budgetmanagementapp.MainActivity;
 import com.moutamid.budgetmanagementapp.R;
+import com.moutamid.budgetmanagementapp.activities.SelectCurrencyActivity;
 
 import java.util.HashMap;
 import java.util.Objects;
@@ -135,7 +136,7 @@ public class SignupActivity extends AppCompatActivity {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if (task.isSuccessful()) {
-                                                startActivity(new Intent(SignupActivity.this, MainActivity.class));
+                                                startActivity(new Intent(SignupActivity.this, SelectCurrencyActivity.class));
                                                 finishAffinity();
                                             } else {
                                                 show_toast("Failed to store user data: " + task.getException(), 0);

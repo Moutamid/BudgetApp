@@ -2,9 +2,11 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="appColor">#00183F</color>
-    <color name="appColorLight">#537091</color>
-    <color name="appColorCenter">#274A73</color>
+    <color name="background">#F5F7FA</color>
+    <color name="green">#A6CD3C</color>
+    <color name="appColor">#2DA7FC</color>
+    <color name="appColorLight">#2DA7FC</color>
+    <color name="appColorCenter">#2DA7FC</color>
     <color name="applight">#8A8D9B</color>
     <color name="income_color">#4CAF50</color>
     <color name="expense_color">#F44336</color>

@@ -54,4 +54,7 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:4.11.0")
     implementation("androidx.biometric:biometric:1.1.0")
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
+    implementation("com.github.mreram:showcaseview:1.4.1")
+    implementation("com.getkeepsafe.taptargetview:taptargetview:1.13.3")
+
 }

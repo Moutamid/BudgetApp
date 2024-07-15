@@ -8,4 +8,6 @@
     </style>
 
     <style name="Theme.BudgetManagementApp" parent="Base.Theme.BudgetManagementApp" />
+
+
 </resources>

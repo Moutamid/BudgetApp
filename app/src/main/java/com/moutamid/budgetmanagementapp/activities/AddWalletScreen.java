@@ -25,6 +25,7 @@ public class AddWalletScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_add_wallet_screen);
         editTextTotalMoney = findViewById(R.id.editTextTotalMoney);
         switchNotificationPermission = findViewById(R.id.switchNotificationPermission);
