@@ -56,7 +56,7 @@
                 android:layout_marginTop="25dp"
                 android:background="@drawable/btn_bg"
                 android:fontFamily="@font/inter_medium"
-                android:text="Create New Goal"
+                android:text="@string/create_new_goal"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="14dp" />

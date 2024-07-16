@@ -46,8 +46,8 @@ showGuideViewsSequentially();
         name = findViewById(R.id.name);
         layout = findViewById(R.id.layout);
 
-        createGuideView(name, "App Theme", "Tap here to change App Mode either in Dark or Light", () ->
-                        createGuideView(layout, "App Layout", "Tap here to change whole App Color",null
+        createGuideView(name, getString(R.string.app_theme), getString(R.string.tap_here_to_change_app_mode_either_in_dark_or_light), () ->
+                        createGuideView(layout, getString(R.string.app_layout), getString(R.string.tap_here_to_change_whole_app_color),null
 
 
                         )

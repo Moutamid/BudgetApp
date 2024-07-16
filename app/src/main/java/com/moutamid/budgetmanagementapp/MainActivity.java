@@ -69,14 +69,14 @@ public class MainActivity extends AppCompatActivity {
         progress_bar = findViewById(R.id.progress_bar);
         cash.setText(Stash.getString("current_cash"));
         progress_bar.setProgress(90);
-        text_view_progress.setText("90%\n Goals Achieved");
+        text_view_progress.setText(R.string._90_goals_achieved);
 //        text_view_progress.setTextColor(0x00ffffff);
         checkApp(MainActivity.this);
         ArrayList<SliderModel> sliderDataArrayList = new ArrayList<>();
         SliderView sliderView = findViewById(R.id.slider);
-        sliderDataArrayList.add(new SliderModel("Buy car", 60));
-        sliderDataArrayList.add(new SliderModel("Hostel Fee", 40));
-        sliderDataArrayList.add(new SliderModel("House Rent", 30));
+        sliderDataArrayList.add(new SliderModel(getString(R.string.buy_car), 60));
+        sliderDataArrayList.add(new SliderModel(getString(R.string.hostel_fee), 40));
+        sliderDataArrayList.add(new SliderModel(getString(R.string.house_rent), 30));
         SlideAdapter adapter = new SlideAdapter(this, sliderDataArrayList);
         sliderView.setAutoCycleDirection(SliderView.LAYOUT_DIRECTION_LTR);
         sliderView.setSliderAdapter(adapter);
@@ -138,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (!Stash.getBoolean("expense_check", false)) {
                     Stash.put("expense_check", true);
-                    createGuideView(expensesButton, "Expenses", "Tap here to add expenses to make a record of your transactions", null);
+                    createGuideView(expensesButton, getString(R.string.expenses), getString(R.string.tap_here_to_add_expenses_to_make_a_record_of_your_transactions), null);
                 } else {
                     startActivity(new Intent(MainActivity.this, AddExpenseActivity.class));
                 }
@@ -148,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (!Stash.getBoolean("income_check", false)) {
                     Stash.put("income_check", true);
-                    createGuideView(incomeButton, "Income", "Tap here to add income to make a record of your transactions", null);
+                    createGuideView(incomeButton, getString(R.string.income), getString(R.string.tap_here_to_add_income_to_make_a_record_of_your_transactions), null);
                 } else {
                     startActivity(new Intent(MainActivity.this, AddIncomeActivity.class));
                 }
@@ -159,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (!Stash.getBoolean("wallet_check", false)) {
                     Stash.put("wallet_check", true);
-                    createGuideView(addWalletButton, "Add Wallet", "Tap here to add money to your wallet", null);
+                    createGuideView(addWalletButton, getString(R.string.add_wallet), getString(R.string.tap_here_to_add_money_to_your_wallet), null);
                 } else {
                     startActivity(new Intent(MainActivity.this, AddWalletScreen.class));
                 }
@@ -169,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (!Stash.getBoolean("trans_check", false)) {
                     Stash.put("trans_check", true);
-                    createGuideView(transactionHistoryButton, "Transaction History", "Tap here to view transaction history to see how much you get and spend", null);
+                    createGuideView(transactionHistoryButton, getString(R.string.transaction_history), getString(R.string.tap_here_to_view_transaction_history_to_see_how_much_you_get_and_spend), null);
                 } else {
                     startActivity(new Intent(MainActivity.this, TransactionHistoryActivity.class));
                 }
@@ -179,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (!Stash.getBoolean("planned_check", false)) {
                     Stash.put("planned_check", true);
-                    createGuideView(plannedPaymentButton, "Planned Payment", "Tap here to view planned payments for future goals", null);
+                    createGuideView(plannedPaymentButton, getString(R.string.planned_payment), getString(R.string.tap_here_to_view_planned_payments_for_future_goals), null);
                 } else {
                     startActivity(new Intent(MainActivity.this, PlannedPaymentActivity.class));
                 }
@@ -292,11 +292,11 @@ public class MainActivity extends AppCompatActivity {
         cashFlowText = findViewById(R.id.cash_flow_layout);
         slider = findViewById(R.id.slider);
 
-        createGuideView(settingsIcon, "Settings", "Tap here to access settings", () ->
-                        createGuideView(usernameText, "Username", "This is your username", () ->
-                                        createGuideView(cashText, "Cash", "This is your available cash", () ->
-                                                        createGuideView(cashFlowText, "Cash Flow", "This shows your cash that you spend", () ->
-                                                                        createGuideView(slider, "Saving Goals", "Here are your saving goals and you can also create new saving goals here", null
+        createGuideView(settingsIcon, getString(R.string.settings), getString(R.string.tap_here_to_access_settings), () ->
+                        createGuideView(usernameText, getString(R.string.username), getString(R.string.this_is_your_username), () ->
+                                        createGuideView(cashText, getString(R.string.cash), getString(R.string.this_is_your_available_cash), () ->
+                                                        createGuideView(cashFlowText, getString(R.string.cash_flow_), "This shows your cash that you spend", () ->
+                                                                        createGuideView(slider, getString(R.string.saving_goals), getString(R.string.here_are_your_saving_goals_and_you_can_also_create_new_saving_goals_here), null
 //                                                createGuideView(expensesButton, "Expenses", "Tap here to add expenses to make a record of your transactions", () ->
 //                                                        createGuideView(incomeButton, "Income", "Tap here to add income to make a record of your transactions", () ->
 //                                                                createGuideView(addWalletButton, "Add Wallet", "Tap here to add money to your wallet", () ->

@@ -30,10 +30,10 @@ public class SetPinActivity extends AppCompatActivity {
                 String pin = pinInput.getText().toString();
                 if (!pin.isEmpty()||pin.length()<3) {
                     savePin(pin);
-                    Toast.makeText(SetPinActivity.this, "PIN saved", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SetPinActivity.this, getString(R.string.pin_saved), Toast.LENGTH_SHORT).show();
                     finish();
                 } else {
-                    Toast.makeText(SetPinActivity.this, "Enter a valid PIN", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SetPinActivity.this, getString(R.string.enter_a_valid_pin), Toast.LENGTH_SHORT).show();
                 }
             }
         });

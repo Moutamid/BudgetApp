@@ -33,7 +33,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="22dp"
                     android:fontFamily="@font/inter_semi_bold"
-                    android:text="Welcome Back"
+                    android:text="@string/welcome_back"
                     android:textColor="@color/black"
                     android:textSize="15dp" />
 
@@ -44,7 +44,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="42dp"
                     android:fontFamily="@font/inter_extra_bold"
-                    android:text="Moutamid"
+                    android:text="@string/moutamid"
                     android:textColor="@color/appColor"
                     android:textSize="14dp" />
 
@@ -93,7 +93,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/inter_semi_bold"
-                        android:text="Available Cash"
+                        android:text="@string/available_cash"
                         android:textColor="@color/black"
                         android:textSize="14dp" />
 
@@ -125,7 +125,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/inter_semi_bold"
-                        android:text="Cash Flow"
+                        android:text="@string/cash_flow"
                         android:textColor="@color/black"
                         android:textSize="14dp" />
 
@@ -171,7 +171,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_20sdp"
                 android:fontFamily="@font/inter_extra_bold"
-                android:text="Saving Goals"
+                android:text="@string/saving_goals"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_20sdp" />
 
@@ -218,7 +218,7 @@
                         android:fontFamily="@font/inter_extra_bold"
                         android:gravity="center"
 
-                        android:text="Wallet"
+                        android:text="@string/wallet"
                         android:textSize="@dimen/_16sdp" />
 
                     <com.github.mikephil.charting.charts.BarChart
@@ -247,7 +247,7 @@
                             android:background="@drawable/btn_bg"
                             android:fontFamily="@font/inter_medium"
                             android:onClick="expenses"
-                            android:text="Expenses"
+                            android:text="@string/expenses"
                             android:textAllCaps="false"
                             android:textColor="@color/white"
                             android:textSize="14dp" />
@@ -262,7 +262,7 @@
                             android:layout_weight="1"
                             android:background="@drawable/btn_bg"
                             android:fontFamily="@font/inter_medium"
-                            android:text="Income"
+                            android:text="@string/income"
                             android:textAllCaps="false"
                             android:textColor="@color/white"
                             android:textSize="14dp" />
@@ -306,7 +306,7 @@
                         android:fontFamily="@font/inter_extra_bold"
                         android:gravity="center"
 
-                        android:text="Add Wallet"
+                        android:text="@string/add_wallet"
                         android:textSize="@dimen/_14sdp" />
 
                 </LinearLayout>
@@ -354,7 +354,7 @@
                             android:fontFamily="@font/inter_extra_bold"
                             android:gravity="center"
 
-                            android:text="Transaction History"
+                            android:text="@string/transaction_history"
                             android:textSize="@dimen/_12sdp" />
 
                     </LinearLayout>
@@ -396,7 +396,7 @@
                             android:fontFamily="@font/inter_extra_bold"
                             android:gravity="center"
 
-                            android:text="Planned Payment"
+                            android:text="@string/planned_payment"
                             android:textSize="@dimen/_12sdp" />
 
                     </LinearLayout>

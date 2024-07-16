@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Budgeting App</string>
     <string name="action_sign_in_short">REGISTER</string>
@@ -9,6 +10,109 @@
     <string name="send_password_reset_email">Send Password reset email</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_expenses">Add Expenses</string>
+    <string name="expense_amount">Expense Amount</string>
+    <string name="date_of_expense">Date of Expense</string>
+    <string name="description">Description</string>
+    <string name="add_expense">Add Expense</string>
+    <string name="add_savings">Add Savings</string>
+    <string name="goal_name">Goal Name</string>
+    <string name="hostel_fees">Hostel Fees</string>
+    <string name="amount">Amount</string>
+    <string name="note">Note</string>
+    <string name="add_income">Add Income</string>
+    <string name="income_amount">Income Amount</string>
+    <string name="date_of_income">Date of Income</string>
+    <string name="descriptions">Description</string>
+    <string name="add_wallet">Add Wallet</string>
+    <string name="total_money">Total Money</string>
+    <string name="enable_notifications">Enable Notifications</string>
+    <string name="current_balance">Current Balance</string>
+    <string name="enter_amount">Enter Amount</string>
+    <string name="continueee">Continue</string>
+    <string name="help">Help</string>
+    <string name="intelligent_features">Intelligent Features</string>
+    <string name="can_enable_disable_automatic_upgrade_of_a_wallet_when_purchase_online">Can enable / disable automatic upgrade of a wallet when purchase online</string>
+    <string name="can_enable_disable_saving_goal_notification_before_a_purchase">Can enable / disable saving goal notification before a purchase</string>
+    <string name="can_personalize_notification_after_a_purchase">Can personalize notification after a purchase</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="stay_connected">Stay connected</string>
+    <string name="log_in">Log In</string>
+    <string name="continue_as_guest">Continue as Guest</string>
+    <string name="don_t_have_an_account_create_now">Don\'t have an account? Create Now.</string>
+    <string name="welcome_back">Welcome Back</string>
+    <string name="moutamid">Moutamid</string>
+    <string name="cash_flow">Cash Flow</string>
+    <string name="available_cash">Available Cash</string>
+    <string name="saving_goals">Saving Goals</string>
+    <string name="wallet">Wallet</string>
+    <string name="expenses">Expenses</string>
+    <string name="income">Income</string>
+    <string name="transaction_history">Transaction History</string>
+    <string name="planned_payment">Planned Payment</string>
+    <string name="create_savings_gaol">Create Savings Gaol</string>
+    <string name="date_of_achievement">Date of Achievement</string>
+    <string name="already_saved">Already Saved</string>
+    <string name="notification_title">Notification Title</string>
+    <string name="notification_description">Notification Description</string>
+    <string name="create_new_goal">Create New Goal</string>
+    <string name="personalize_app">Personalize App</string>
+    <string name="change_app_theme">Change App Theme</string>
+    <string name="change_app_layout">Change App Layout</string>
+    <string name="payment_name">Payment Name</string>
+    <string name="payment_date">Payment Date</string>
+    <string name="set_payment_reminder">Set Payment Reminder</string>
+    <string name="notes">Notes</string>
+    <string name="save_payment">Save Payment</string>
+    <string name="security">Security</string>
+    <string name="add_pin_option">Add Pin Option</string>
+    <string name="add_touch_id_option">Add Touch ID Option</string>
+    <string name="current_currency">Current Currency</string>
+    <string name="select_only_the_currency_that_you_use_the_most_because_your_transactions_will_be_based_on_this_selection">Select only the currency that you use the most because your transactions will be based on this selection.</string>
+    <string name="confirm">Confirm</string>
+    <string name="set_pin">Set Pin</string>
+    <string name="enter_pin">Enter Pin</string>
+    <string name="you_can_set_any_pin_here_which_you_will_need_to_enter_in_the_app_to_gain_access_this_will_enhance_the_security_of_the_app">You can set any PIN here, which you will need to enter in the app to gain access. This will enhance the security of the app</string>
+    <string name="save_pin">Save Pin</string>
+    <string name="app_setting">App Setting</string>
+    <string name="change_language">Change Language</string>
+    <string name="change_currency">Change Currency</string>
+    <string name="signup">Signup</string>
+    <string name="name">Name</string>
+    <string name="i_carefully_read_all_terms_and_conditions_and_accept_it">I carefully read all terms and conditions and accept it</string>
+    <string name="already_have_an_account_login">Already have an account? Login</string>
+    <string name="welcome_to">Welcome to</string>
+    <string name="budgeting_app">Budgeting App</string>
+    <string name="start_now">Start Now</string>
+    <string name="settings">Settings</string>
+    <string name="upgrade_plan">Upgrade Plan</string>
+    <string name="intelligent_feature">Intelligent Feature</string>
+    <string name="personalize_my_app">Personalize my App</string>
+    <string name="select_app_layout">Select App Layout</string>
+    <string name="apply">Apply</string>
+    <string name="select_language">Select Language</string>
+    <string name="english">English</string>
+    <string name="select_app_theme">Select App theme</string>
+    <string name="dark_theme">Dark Theme</string>
+    <string name="light_theme">Light Theme</string>
+    <string name="intelligent_featuress">Intelligent Feature</string>
+    <string name="you_can_enable_disable_update_and_other_feature_to_alert_yourself_before_purchasing">You can enable / disable update and other feature to alert yourself before purchasing</string>
+    <string name="app_theme">App Theme</string>
+    <string name="tap_here_to_change_app_mode_either_in_dark_or_light">Tap here to change App Mode either in Dark or Light</string>
+    <string name="tap_here_to_change_whole_app_color">Tap here to change whole App Color</string>
+    <string name="app_layout">App Layout</string>
+    <string name="pin_saved">PIN saved</string>
+    <string name="enter_a_valid_pin">Enter a valid PIN</string>
+    <string name="smart_budgeting_for_a_brighter_future">Smart Budgeting for a Brighter Future.</string>
+    <string name="spend_wisely_save_easily">Spend Wisely, Save Easily.</string>
+    <string name="empowering_you_to_take_control_of_your_finances">Empowering You to Take Control of Your Finances.</string>
+    <string name="groceries">Groceries</string>
+    <string name="transport">Transport</string>
+    <string name="gifts">Gifts</string>
+    <string name="salary">Salary</string>
+    <string name="freelance">Freelance</string>
+    <string name="expense_saved_successfully">Expense saved successfully!</string>
     <string name="help_content">
     <![CDATA[
     <b>Welcome to the Budget App Help Section!</b><br/><br/>
@@ -32,6 +136,22 @@
     Thank you for using Budget App!
     ]]>
 </string>
+    <string name="tap_here_to_access_settings">Tap here to access settings</string>
+    <string name="this_is_your_username">This is your username</string>
+    <string name="username">Username</string>
+    <string name="cash">Cash</string>
+    <string name="cash_flow_">Cash Flow</string>
+    <string name="this_is_your_available_cash">This is your available cash</string>
+    <string name="here_are_your_saving_goals_and_you_can_also_create_new_saving_goals_here">Here are your saving goals and you can also create new saving goals here</string>
+    <string name="buy_car">Buy car</string>
+    <string name="hostel_fee">Hostel Fee</string>
+    <string name="house_rent">House Rent</string>
+    <string name="tap_here_to_add_expenses_to_make_a_record_of_your_transactions">Tap here to add expenses to make a record of your transactions</string>
+    <string name="tap_here_to_add_income_to_make_a_record_of_your_transactions">Tap here to add income to make a record of your transactions</string>
+    <string name="tap_here_to_add_money_to_your_wallet">Tap here to add money to your wallet</string>
+    <string name="tap_here_to_view_transaction_history_to_see_how_much_you_get_and_spend">Tap here to view transaction history to see how much you get and spend</string>
+    <string name="tap_here_to_view_planned_payments_for_future_goals">Tap here to view planned payments for future goals</string>
+    <string name="_90_goals_achieved">90%\n Goals Achieved</string>
 
 
 </resources>

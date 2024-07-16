@@ -25,7 +25,7 @@ public class IntelligentFeaturesActivity extends AppCompatActivity {
 
         if (!Stash.getBoolean("intell_check", false)) {
             Stash.put("intell_check", true);
-            createGuideView(main_layout, "Intelligent Feature", "You can enable / disable update and other feature to alert yourself before purchasing", null);
+            createGuideView(main_layout, getString(R.string.intelligent_featuress), getString(R.string.you_can_enable_disable_update_and_other_feature_to_alert_yourself_before_purchasing), null);
         }
 
 

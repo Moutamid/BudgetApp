@@ -30,7 +30,7 @@
                 android:layout_gravity="center"
                 android:layout_toRightOf="@+id/imageView2"
                 android:fontFamily="@font/inter_extra_bold"
-                android:text="Settings"
+                android:text="@string/settings"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="20dp"
                 android:textColor="@color/white"
@@ -73,7 +73,7 @@
                 android:layout_marginEnd="10dp"
                 android:fontFamily="@font/inter_medium"
                 android:gravity="center_vertical"
-                android:text="Upgrade Plan"
+                android:text="@string/upgrade_plan"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_16sdp" />
 
@@ -107,7 +107,7 @@
                 android:layout_marginEnd="10dp"
                 android:fontFamily="@font/inter_medium"
                 android:gravity="center_vertical"
-                android:text="Settings"
+                android:text="@string/settings"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_16sdp"
                  />
@@ -142,7 +142,7 @@
                 android:layout_marginEnd="10dp"
                 android:fontFamily="@font/inter_medium"
                 android:gravity="center_vertical"
-                android:text="Intelligent Feature"
+                android:text="@string/intelligent_feature"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_16sdp"
                  />
@@ -177,7 +177,7 @@
                 android:layout_marginEnd="10dp"
                 android:fontFamily="@font/inter_medium"
                 android:gravity="center_vertical"
-                android:text="Security"
+                android:text="@string/security"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_16sdp"
                  />
@@ -212,7 +212,7 @@
                 android:layout_marginEnd="10dp"
                 android:fontFamily="@font/inter_medium"
                 android:gravity="center_vertical"
-                android:text="Personalize my App"
+                android:text="@string/personalize_my_app"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_16sdp"
                  />
@@ -247,7 +247,7 @@
                 android:layout_marginEnd="10dp"
                 android:fontFamily="@font/inter_medium"
                 android:gravity="center_vertical"
-                android:text="Help"
+                android:text="@string/help"
                 android:textColor="@color/expense_color"
                 android:textSize="@dimen/_16sdp"
                  />

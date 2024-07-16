@@ -34,7 +34,7 @@
           android:layout_marginStart="20dp"
           android:layout_toRightOf="@+id/imageView2"
           android:fontFamily="@font/inter_extra_bold"
-          android:text="Personalize App"
+          android:text="@string/personalize_app"
           android:textColor="@color/white"
           android:textSize="18dp" />
 
@@ -77,7 +77,7 @@
         android:paddingTop="@dimen/_10sdp"
 
         android:onClick="theme"
-        android:text="Change App Theme"
+        android:text="@string/change_app_theme"
        android:textColor="@color/black"
         android:textSize="@dimen/_14sdp" />
 
@@ -107,7 +107,7 @@
         android:layout_marginEnd="60dp"
         android:fontFamily="@font/inter_medium"
         android:gravity="center_vertical"
-        android:text="Change App Layout"
+        android:text="@string/change_app_layout"
         android:onClick="layout"
         android:textColor="@color/black"
         android:textSize="@dimen/_14sdp" />

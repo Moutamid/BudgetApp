@@ -20,7 +20,7 @@
             android:layout_centerInParent="true"
             android:layout_gravity="center"
             android:fontFamily="@font/inter_extra_bold"
-            android:text="Login"
+            android:text="@string/login"
             android:textColor="@color/black"
             android:textSize="35dp"
             android:textStyle="bold" />
@@ -43,7 +43,7 @@
             android:layout_marginEnd="30dp"
             android:background="@drawable/edit_bg"
             android:fontFamily="@font/inter_font"
-            android:hint="Email"
+            android:hint="@string/email"
             android:inputType="textEmailAddress"
             android:padding="10dp"
             android:paddingStart="@dimen/_18sdp"
@@ -62,7 +62,7 @@
             android:drawablePadding="12dp"
             android:ems="20"
             android:fontFamily="@font/inter_font"
-            android:hint="Password"
+            android:hint="@string/password"
             android:inputType="textPassword"
             android:paddingStart="19dp"
             android:textColor="@color/black"
@@ -77,7 +77,7 @@
             android:fontFamily="@font/inter_medium"
             android:paddingStart="5dp"
             android:buttonTint="@color/appColor"
-            android:text="Stay connected"
+            android:text="@string/stay_connected"
             android:textColor="@color/black" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -89,7 +89,7 @@
             android:layout_marginEnd="30dp"
             android:background="@drawable/btn_bg"
             android:fontFamily="@font/inter_medium"
-            android:text="Log In"
+            android:text="@string/log_in"
             android:textAllCaps="false"
                 android:textColor="@color/white"
             android:textSize="14dp" />
@@ -102,7 +102,7 @@
             android:layout_marginEnd="30dp"
             android:background="@drawable/btn_bg"
             android:fontFamily="@font/inter_medium"
-            android:text="Continue as Guest"
+            android:text="@string/continue_as_guest"
             android:onClick="guest"
             android:textAllCaps="false"
                 android:textColor="@color/white"
@@ -117,7 +117,7 @@
             android:layout_marginBottom="20dp"
             android:fontFamily="@font/inter_medium"
             android:gravity="center"
-            android:text="Don't have an account? Create Now."
+            android:text="@string/don_t_have_an_account_create_now"
             android:textColor="#686868"
             android:textSize="@dimen/_12sdp" />
 

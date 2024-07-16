@@ -33,7 +33,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_toRightOf="@+id/imageView2"
                 android:fontFamily="@font/inter_extra_bold"
-                android:text="Set Pin"
+                android:text="@string/set_pin"
                 android:textColor="@color/white"
                 android:textSize="18dp" />
 
@@ -68,7 +68,7 @@
             android:layout_marginTop="40dp"
             android:background="@drawable/edit_bg"
             android:fontFamily="@font/inter_medium"
-            android:hint="Enter Pin"
+            android:hint="@string/enter_pin"
             android:inputType="number"
             android:paddingStart="18dp"
             android:textColor="@color/black"
@@ -80,7 +80,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="@dimen/_20sdp"
             android:fontFamily="@font/inter_light"
-            android:text="You can set any PIN here, which you will need to enter in the app to gain access. This will enhance the security of the app"
+            android:text="@string/you_can_set_any_pin_here_which_you_will_need_to_enter_in_the_app_to_gain_access_this_will_enhance_the_security_of_the_app"
             android:textSize="12dp" />
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/save_pin_button"
@@ -90,7 +90,7 @@
             android:layout_marginTop="25dp"
             android:background="@drawable/btn_bg"
             android:fontFamily="@font/inter_medium"
-            android:text="Save Pin"
+            android:text="@string/save_pin"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="14dp" />

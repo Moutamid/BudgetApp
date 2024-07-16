@@ -28,7 +28,7 @@
         android:fontFamily="@font/inter_bold"
         android:gravity="center"
         android:textColor="@color/black"
-        android:text="Welcome to"
+        android:text="@string/welcome_to"
         android:textSize="@dimen/_26sdp" />
 
     <TextView
@@ -38,7 +38,7 @@
         android:fontFamily="@font/inter_bold"
         android:gravity="center"
         android:textColor="@color/black"
-        android:text="Budgeting App"
+        android:text="@string/budgeting_app"
         android:textSize="@dimen/_17sdp" />
 
 
@@ -75,7 +75,7 @@
         android:layout_marginBottom="@dimen/_35sdp"
         android:fontFamily="@font/inter_semi_bold"
         android:onClick="start"
-        android:text="Start Now"
+        android:text="@string/start_now"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="14dp" />

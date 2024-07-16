@@ -79,7 +79,7 @@ public class AddExpenseActivity extends AppCompatActivity {
         // TODO: Save this data to your database or handle it as needed
         // Example: You can create an Expense object and save it to Room database
 
-        Toast.makeText(this, "Expense saved successfully!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getString(R.string.expense_saved_successfully), Toast.LENGTH_SHORT).show();
     }
 
     public void back(View view) {

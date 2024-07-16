@@ -6,32 +6,32 @@
         <item>GBP</item>
         <item>INR</item>
         <item>JPY</item>
-        <!-- Add more currencies as needed -->
+        <!-- Aggiungi altre valute se necessario -->
     </string-array>
     <string-array name="expense_category_array">
-        <item>Select Any</item>
-        <item>Food</item>
-        <item>Transport</item>
+        <item>Seleziona Qualsiasi</item>
+        <item>Cibo</item>
+        <item>Trasporto</item>
         <item>Shopping</item>
-        <item>Entertainment</item>
-        <item>Bills</item>
-        <item>Health</item>
-        <item>Education</item>
-        <item>Rent</item>
-        <item>Travel</item>
-        <item>Miscellaneous</item>
+        <item>Intrattenimento</item>
+        <item>Bolle</item>
+        <item>Salute</item>
+        <item>Istruzione</item>
+        <item>Affitto</item>
+        <item>Viaggio</item>
+        <item>Varie</item>
     </string-array>
     <string-array name="income_source_array">
-        <item>Select Any</item>
-
-        <item>Salary</item>
+        <item>Seleziona Qualsiasi</item>
+        <item>Stipendio</item>
         <item>Business</item>
         <item>Freelance</item>
-        <item>Investments</item>
-        <item>Rent</item>
-        <item>Gifts</item>
-        <item>Other</item>
+        <item>Investimenti</item>
+        <item>Affitto</item>
+        <item>Regali</item>
+        <item>Altro</item>
     </string-array>
+
     <string-array name="currencies">
         <item>AED - United Arab Emirates Dirham</item>
         <item>AFN - Afghan Afghani</item>

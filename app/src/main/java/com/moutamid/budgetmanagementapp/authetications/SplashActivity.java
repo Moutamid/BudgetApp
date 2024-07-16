@@ -7,7 +7,9 @@ import androidx.core.content.ContextCompat;
 
 import java.util.concurrent.Executor;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
@@ -21,11 +23,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.moutamid.budgetmanagementapp.R;
 import com.moutamid.budgetmanagementapp.activities.OnBoarding.OnBoardingActivity;
 import com.moutamid.budgetmanagementapp.activities.SliderActivity;
+import com.moutamid.budgetmanagementapp.helper.LocaleHelper;
 
 public class SplashActivity extends AppCompatActivity {
 
     private static int DELAY_TIME = 2200;
-
+    Context context;
+    Resources resources;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +54,8 @@ public class SplashActivity extends AppCompatActivity {
 //
 //        Animation zoomOut = AnimationUtils.loadAnimation(this, R.anim.zoom_out);
 //        textView.startAnimation(zoomOut);
+        context = LocaleHelper.setLocale(SplashActivity.this, "it");
+        resources = context.getResources();
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
