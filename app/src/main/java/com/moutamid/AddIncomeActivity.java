@@ -8,6 +8,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.moutamid.budgetmanagementapp.R;
 
 import android.app.DatePickerDialog;
@@ -24,6 +25,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Calendar;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.moutamid.budgetmanagementapp.model.Income;
+
 public class AddIncomeActivity extends AppCompatActivity {
 
     private EditText editTextIncomeAmount;
@@ -31,6 +36,7 @@ public class AddIncomeActivity extends AppCompatActivity {
     private EditText editTextIncomeDate;
     private EditText editTextIncomeDescription;
     private Button buttonSaveIncome;
+    private DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +50,9 @@ public class AddIncomeActivity extends AppCompatActivity {
         editTextIncomeDate = findViewById(R.id.editTextIncomeDate);
         editTextIncomeDescription = findViewById(R.id.editTextIncomeDescription);
         buttonSaveIncome = findViewById(R.id.buttonSaveIncome);
+
+        // Initialize Firebase Database reference
+        databaseReference = FirebaseDatabase.getInstance().getReference("BudgetingApp").child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("incomes");
 
         // Populate the spinner with income sources
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -86,11 +95,32 @@ public class AddIncomeActivity extends AppCompatActivity {
     }
 
     private void saveIncome() {
-           // TODO: Save this data to your database or handle it as needed
-        // Example: You can create an Income object and save it to Room database
+        String amount = editTextIncomeAmount.getText().toString().trim();
+        String source = spinnerIncomeSource.getSelectedItem().toString();
+        String date = editTextIncomeDate.getText().toString().trim();
+        String description = editTextIncomeDescription.getText().toString().trim();
+
+        if (amount.isEmpty() || date.isEmpty() || source.equals("Select Source")) {
+            Toast.makeText(this, "Please fill in all the required fields", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Create an Income object
+        Income income = new Income(amount, source, date, description);
+
+        // Save the income object to Firebase Database
+        String incomeId = databaseReference.push().getKey();
+        databaseReference.child(incomeId).setValue(income);
 
         Toast.makeText(this, "Income saved successfully!", Toast.LENGTH_SHORT).show();
+
+        // Clear the form fields
+        editTextIncomeAmount.setText("");
+        editTextIncomeDate.setText("");
+        editTextIncomeDescription.setText("");
+        spinnerIncomeSource.setSelection(0);
     }
+
     public void back(View view) {
         onBackPressed();
     }
