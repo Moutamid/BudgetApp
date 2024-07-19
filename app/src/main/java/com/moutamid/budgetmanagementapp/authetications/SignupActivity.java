@@ -111,6 +111,9 @@ public class SignupActivity extends AppCompatActivity {
                 if (password.length() < 6) {
                     show_toast("Password too short, enter minimum 6 characters!", 0);
                     return;
+                } if (!textViewTerms.isChecked()) {
+                    show_toast("Please must check terms and conditions", 0);
+                    return;
                 }
 
                 Dialog loadingBar = new Dialog(SignupActivity.this);

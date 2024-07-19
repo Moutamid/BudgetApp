@@ -104,6 +104,7 @@
             android:fontFamily="@font/inter_medium"
             android:text="@string/continue_as_guest"
             android:onClick="guest"
+            android:enabled="false"
             android:textAllCaps="false"
                 android:textColor="@color/white"
             android:textSize="14dp" />

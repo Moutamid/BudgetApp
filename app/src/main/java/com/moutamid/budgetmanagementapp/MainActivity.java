@@ -341,7 +341,6 @@ public class MainActivity extends AppCompatActivity {
                 }
                 displayBarChart();
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Toast.makeText(MainActivity.this, "Failed to load expenses data", Toast.LENGTH_SHORT).show();
