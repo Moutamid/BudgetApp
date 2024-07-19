@@ -7,6 +7,7 @@ import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.fxn.stash.Stash;
 import com.moutamid.budgetmanagementapp.R;
 import com.moutamid.budgetmanagementapp.adapter.LanguageSpinnerAdapter;
 import com.moutamid.budgetmanagementapp.adapter.SliderAdapter;
@@ -47,6 +48,7 @@ public class SliderActivity extends AppCompatActivity {
     }
 
     public void start(View view) {
+        Stash.put("onBoarding", true);
         startActivity(new Intent(this, LoginActivity.class));
         finish();
     }

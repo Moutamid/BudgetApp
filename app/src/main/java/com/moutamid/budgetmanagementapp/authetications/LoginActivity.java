@@ -46,7 +46,10 @@ public class LoginActivity extends AppCompatActivity {
         inputPassword = findViewById(R.id.password);
         btnSignup = findViewById(R.id.btnSignup);
         btnLogin = findViewById(R.id.btnLogin);
-
+        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+            startActivity(new Intent(this, MainActivity.class));
+            finish();
+        }
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -19,7 +19,21 @@
         android:background="@drawable/card_bg"
         android:backgroundTint="@color/green"
         android:src="@drawable/baseline_add_24" />
-        <LinearLayout
+
+    <TextView
+        android:id="@+id/amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/add"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginEnd="@dimen/_30sdp"
+        android:fontFamily="@font/inter_medium"
+        android:text="Buy new Car"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_10sdp" />
+
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -53,7 +67,7 @@
                 android:layout_height="45dp"
                 android:layout_above="@+id/sign_up_button"
                 android:layout_gravity="center"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="32dp"
                 android:background="@drawable/btn_bg"
                 android:fontFamily="@font/inter_medium"
                 android:text="@string/create_new_goal"

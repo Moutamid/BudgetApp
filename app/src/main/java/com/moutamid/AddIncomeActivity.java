@@ -34,7 +34,7 @@ public class AddIncomeActivity extends AppCompatActivity {
     private EditText editTextIncomeAmount;
     private Spinner spinnerIncomeSource;
     private EditText editTextIncomeDate;
-    private EditText editTextIncomeDescription;
+//    private EditText editTextIncomeDescription;
     private Button buttonSaveIncome;
     private DatabaseReference databaseReference;
 
@@ -48,7 +48,7 @@ public class AddIncomeActivity extends AppCompatActivity {
         editTextIncomeAmount = findViewById(R.id.editTextIncomeAmount);
         spinnerIncomeSource = findViewById(R.id.spinnerIncomeSource);
         editTextIncomeDate = findViewById(R.id.editTextIncomeDate);
-        editTextIncomeDescription = findViewById(R.id.editTextIncomeDescription);
+//        editTextIncomeDescription = findViewById(R.id.editTextIncomeDescription);
         buttonSaveIncome = findViewById(R.id.buttonSaveIncome);
 
         // Initialize Firebase Database reference
@@ -98,7 +98,7 @@ public class AddIncomeActivity extends AppCompatActivity {
         String amount = editTextIncomeAmount.getText().toString().trim();
         String source = spinnerIncomeSource.getSelectedItem().toString();
         String date = editTextIncomeDate.getText().toString().trim();
-        String description = editTextIncomeDescription.getText().toString().trim();
+//        String description = editTextIncomeDescription.getText().toString().trim();
 
         if (amount.isEmpty() || date.isEmpty() || source.equals("Select Source")) {
             Toast.makeText(this, "Please fill in all the required fields", Toast.LENGTH_SHORT).show();
@@ -106,7 +106,7 @@ public class AddIncomeActivity extends AppCompatActivity {
         }
 
         // Create an Income object
-        Income income = new Income(amount, source, date, description);
+        Income income = new Income(amount, source, date);
 
         // Save the income object to Firebase Database
         String incomeId = databaseReference.push().getKey();
@@ -117,7 +117,7 @@ public class AddIncomeActivity extends AppCompatActivity {
         // Clear the form fields
         editTextIncomeAmount.setText("");
         editTextIncomeDate.setText("");
-        editTextIncomeDescription.setText("");
+//        editTextIncomeDescription.setText("");
         spinnerIncomeSource.setSelection(0);
     }
 

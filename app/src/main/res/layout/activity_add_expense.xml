@@ -109,6 +109,7 @@
         android:background="@drawable/edit_bg"
         android:fontFamily="@font/inter_font"
         android:padding="10dp"
+        android:visibility="gone"
         android:paddingStart="@dimen/_18sdp"
         android:textColor="@color/black"
         android:textColorHint="#979393"

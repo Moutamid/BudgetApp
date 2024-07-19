@@ -3,6 +3,7 @@ package com.moutamid.budgetmanagementapp;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
@@ -25,13 +27,22 @@ import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
+import com.github.mikephil.charting.utils.ColorTemplate;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.moutamid.AddIncomeActivity;
 import com.moutamid.budgetmanagementapp.activities.AddWalletScreen;
 import com.moutamid.budgetmanagementapp.activities.PlannedPaymentActivity;
 import com.moutamid.budgetmanagementapp.activities.TransactionHistoryActivity;
 import com.moutamid.budgetmanagementapp.activities.UserActivity;
 import com.moutamid.budgetmanagementapp.adapter.SlideAdapter;
-import com.moutamid.budgetmanagementapp.adapter.SliderModel;
+import com.moutamid.budgetmanagementapp.model.Income;
+import com.moutamid.budgetmanagementapp.model.SavingGoal;
+import com.moutamid.budgetmanagementapp.model.SliderModel;
 import com.smarteist.autoimageslider.SliderView;
 
 import org.json.JSONException;
@@ -43,6 +54,9 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import smartdevelop.ir.eram.showcaseviewlib.GuideView;
 import smartdevelop.ir.eram.showcaseviewlib.config.DismissType;
@@ -58,6 +72,11 @@ public class MainActivity extends AppCompatActivity {
     RelativeLayout transactionHistoryButton;
     RelativeLayout plannedPaymentButton;
 
+    private DatabaseReference incomeReference;
+    private DatabaseReference expensesReference;
+    private List<Income> incomes;
+    private List<Income> expenses;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,60 +87,18 @@ public class MainActivity extends AppCompatActivity {
         cash = findViewById(R.id.cash);
         progress_bar = findViewById(R.id.progress_bar);
         cash.setText(Stash.getString("current_cash"));
-        progress_bar.setProgress(90);
-        text_view_progress.setText(R.string._90_goals_achieved);
 //        text_view_progress.setTextColor(0x00ffffff);
         checkApp(MainActivity.this);
-        ArrayList<SliderModel> sliderDataArrayList = new ArrayList<>();
-        SliderView sliderView = findViewById(R.id.slider);
-        sliderDataArrayList.add(new SliderModel(getString(R.string.buy_car), 60));
-        sliderDataArrayList.add(new SliderModel(getString(R.string.hostel_fee), 40));
-        sliderDataArrayList.add(new SliderModel(getString(R.string.house_rent), 30));
-        SlideAdapter adapter = new SlideAdapter(this, sliderDataArrayList);
-        sliderView.setAutoCycleDirection(SliderView.LAYOUT_DIRECTION_LTR);
-        sliderView.setSliderAdapter(adapter);
-        sliderView.setScrollTimeInSec(3);
-        sliderView.setAutoCycle(true);
-        sliderView.startAutoCycle();
         barChart = findViewById(R.id.barChart);
-        // Sample data for income and expenses
-        ArrayList<BarEntry> incomeEntries = new ArrayList<>();
-        incomeEntries.add(new BarEntry(0, 5000)); // January
-        incomeEntries.add(new BarEntry(1, 6000)); // February
-        incomeEntries.add(new BarEntry(2, 7000)); // March
+        incomeReference = FirebaseDatabase.getInstance().getReference("BudgetingApp").child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("incomes");
+        expensesReference = FirebaseDatabase.getInstance().getReference("BudgetingApp").child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("expenses");
 
-        ArrayList<BarEntry> expenseEntries = new ArrayList<>();
-        expenseEntries.add(new BarEntry(0, 3000)); // January
-        expenseEntries.add(new BarEntry(1, 4000)); // February
-        expenseEntries.add(new BarEntry(2, 5000)); // March
+        incomes = new ArrayList<>();
+        expenses = new ArrayList<>();
 
-        BarDataSet incomeDataSet = new BarDataSet(incomeEntries, "Income");
-        incomeDataSet.setColor(getResources().getColor(R.color.appColor));
-
-        BarDataSet expenseDataSet = new BarDataSet(expenseEntries, "Expenses");
-        expenseDataSet.setColor(getResources().getColor(R.color.green));
-
-        BarData barData = new BarData(incomeDataSet, expenseDataSet);
-        barData.setBarWidth(0.3f); // set custom bar width
-
-        barChart.setData(barData);
-
-        // Formatting the X-Axis
-        XAxis xAxis = barChart.getXAxis();
-        xAxis.setValueFormatter(new IndexAxisValueFormatter(new String[]{"January", "February", "March"}));
-        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis.setGranularity(1f);
-        xAxis.setGranularityEnabled(true);
-
-        // Formatting the Y-Axis
-        YAxis leftAxis = barChart.getAxisLeft();
-        leftAxis.setGranularity(1000f);
-
-        barChart.getAxisRight().setEnabled(false);
-
-        barChart.setFitBars(true);
-        barChart.animateY(1000);
-        barChart.invalidate(); // refresh
+        fetchTransactionData();
+        fetchSavingGoals();
+        barChart = findViewById(R.id.barChart);
 
         // Create the guide views
         if (!Stash.getBoolean("all_check", false)) {
@@ -332,5 +309,172 @@ public class MainActivity extends AppCompatActivity {
                 })
                 .build()
                 .show();
+    }
+
+    private void fetchTransactionData() {
+        incomeReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                incomes.clear();
+                for (DataSnapshot postSnapshot : snapshot.getChildren()) {
+                    Income income = postSnapshot.getValue(Income.class);
+                    incomes.add(income);
+                }
+                fetchExpensesData();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(MainActivity.this, "Failed to load income data", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void fetchExpensesData() {
+        expensesReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                expenses.clear();
+                for (DataSnapshot postSnapshot : snapshot.getChildren()) {
+                    Income expense = postSnapshot.getValue(Income.class);
+                    expenses.add(expense);
+                }
+                displayBarChart();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(MainActivity.this, "Failed to load expenses data", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void displayBarChart() {
+        List<BarEntry> incomeEntries = new ArrayList<>();
+        List<BarEntry> expenseEntries = new ArrayList<>();
+        List<String> dates = new ArrayList<>();
+
+        // Map to hold date and index
+        Map<String, Integer> dateIndexMap = new HashMap<>();
+        int index = 0;
+
+        // Process incomes
+        for (Income income : incomes) {
+            String date = income.getDate(); // Assuming you have a getDate() method in your Income class
+            if (!dateIndexMap.containsKey(date)) {
+                dateIndexMap.put(date, index);
+                dates.add(date);
+                index++;
+            }
+            incomeEntries.add(new BarEntry(dateIndexMap.get(date), Float.parseFloat(income.getAmount())));
+        }
+
+        // Process expenses
+        for (Income expense : expenses) {
+            String date = expense.getDate(); // Assuming you have a getDate() method in your Expense class
+            if (!dateIndexMap.containsKey(date)) {
+                dateIndexMap.put(date, index);
+                dates.add(date);
+                index++;
+            }
+            expenseEntries.add(new BarEntry(dateIndexMap.get(date), Float.parseFloat(expense.getAmount())));
+        }
+
+        BarDataSet incomeDataSet = new BarDataSet(incomeEntries, "Income");
+        incomeDataSet.setColor(ColorTemplate.COLORFUL_COLORS[0]);
+        incomeDataSet.setValueTextColor(Color.BLACK); // Set text color for values inside bars
+        incomeDataSet.setValueTextSize(7f); // Set text size for values inside bars
+
+        BarDataSet expenseDataSet = new BarDataSet(expenseEntries, "Expenses");
+        expenseDataSet.setColor(ColorTemplate.COLORFUL_COLORS[1]);
+        incomeDataSet.setValueTextColor(Color.BLACK); // Set text color for values inside bars
+        incomeDataSet.setValueTextSize(7f); // Set text size for values inside bars
+
+        BarData barData = new BarData(incomeDataSet, expenseDataSet);
+
+        // Set the bar width
+        float barWidth = 0.3f; // Adjust bar width as needed
+        barData.setBarWidth(barWidth);
+
+        // Configure the X axis
+        XAxis xAxis = barChart.getXAxis();
+        xAxis.setValueFormatter(new IndexAxisValueFormatter(dates));
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setDrawGridLines(false);
+        xAxis.setGranularity(1f); // Ensure labels are not skipped
+        xAxis.setLabelRotationAngle(-45); // Rotate labels for better readability
+        xAxis.setLabelCount(dates.size(), true); // Set label count to match the number of dates
+
+        // Set group spacing
+        float groupSpace = 0.4f;
+        float barSpace = 0.05f; // Adjust bar space to fit within group
+
+        barChart.setData(barData);
+
+        // Set the axis limits based on the group width
+        xAxis.setAxisMinimum(-barWidth); // Set the minimum value to include space for the bars
+        xAxis.setAxisMaximum(dates.size()); // Set the maximum value to fit all bars
+
+        // Group the bars
+        barChart.groupBars(-barWidth, groupSpace, barSpace);
+
+        YAxis leftAxis = barChart.getAxisLeft();
+        leftAxis.setDrawGridLines(false);
+
+        YAxis rightAxis = barChart.getAxisRight();
+        rightAxis.setEnabled(false);
+
+        barChart.getDescription().setEnabled(false);
+        barChart.setFitBars(true);
+        barChart.animateY(1000);
+        barChart.invalidate();
+    }
+
+    private void fetchSavingGoals() {
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("BudgetingApp").child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("SavingGoals");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                ArrayList<SliderModel> sliderDataArrayList = new ArrayList<>();
+                int totalAmount = 0;
+                int totalAlreadySaved = 0;
+
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    String goalName = snapshot.child("goalName").getValue(String.class);
+                    String goalid = snapshot.child("id").getValue(String.class);
+                    int amount = Integer.parseInt(snapshot.child("amount").getValue(String.class));
+                    int alreadySaved = Integer.parseInt(snapshot.child("alreadySaved").getValue(String.class));
+                    sliderDataArrayList.add(new SliderModel(goalName, amount, alreadySaved, goalid));
+
+                    // Calculate totals
+                    totalAmount += amount;
+                    totalAlreadySaved += alreadySaved;
+                }
+
+                // Calculate total percentage
+                int totalPercentage = (totalAmount == 0) ? 0 : (totalAlreadySaved * 100) / totalAmount;
+                displayTotalPercentage(totalPercentage);
+
+                // Set up the slider
+                SlideAdapter adapter = new SlideAdapter(MainActivity.this, sliderDataArrayList);
+                SliderView sliderView = findViewById(R.id.slider);
+                sliderView.setSliderAdapter(adapter);
+                sliderView.setAutoCycleDirection(SliderView.LAYOUT_DIRECTION_LTR);
+                sliderView.setScrollTimeInSec(3);
+                sliderView.setAutoCycle(true);
+                sliderView.startAutoCycle();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Handle possible errors.
+            }
+        });
+    }
+
+    private void displayTotalPercentage(int totalPercentage) {
+        text_view_progress.setText(totalPercentage+"%\n"+getString(R.string._90_goals_achieved));
+        progress_bar.setProgress(totalPercentage);
+
     }
 }

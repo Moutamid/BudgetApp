@@ -1,29 +1,23 @@
 package com.moutamid.budgetmanagementapp.authetications;
 
-import androidx.annotation.NonNull;
-import androidx.biometric.BiometricManager;
-import androidx.biometric.BiometricPrompt;
-import androidx.core.content.ContextCompat;
-
-import java.util.concurrent.Executor;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
-import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.biometric.BiometricPrompt;
+import androidx.core.content.ContextCompat;
 
+import com.fxn.stash.Stash;
 import com.moutamid.budgetmanagementapp.R;
-import com.moutamid.budgetmanagementapp.activities.OnBoarding.OnBoardingActivity;
 import com.moutamid.budgetmanagementapp.activities.SliderActivity;
 import com.moutamid.budgetmanagementapp.helper.LocaleHelper;
+
+import java.util.concurrent.Executor;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -59,11 +53,17 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-
-                Intent i = new Intent(SplashActivity.this, SliderActivity.class);
-                startActivity(i);
-                finish();
-
+                if (!Stash.getBoolean("onBoarding", false)) {
+                    Intent i = new Intent(SplashActivity.this, SliderActivity.class);
+                    startActivity(i);
+                    finish();
+                }
+                else
+                {
+                    Intent i = new Intent(SplashActivity.this, LoginActivity.class);
+                    startActivity(i);
+                    finish();
+                }
             }
         },DELAY_TIME);
     }

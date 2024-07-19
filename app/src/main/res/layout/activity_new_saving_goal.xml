@@ -129,24 +129,12 @@
             android:textColorHint="#979393"
             android:textSize="@dimen/_15sdp" />
 
-    <Spinner
-        android:id="@+id/spinnerPaymentOption"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:visibility="gone"
-        android:background="@drawable/edit_bg"
-        android:fontFamily="@font/inter_font"
-        android:layout_below="@id/editTextTimeOfAchievement"
-        android:layout_marginTop="16dp"/>
 
     <EditText
         android:id="@+id/editTextNotificationTitle"
         android:layout_width="match_parent"
         android:hint="@string/notification_title"
         android:inputType="text"
-        android:layout_below="@id/spinnerPaymentOption"
 
         android:layout_height="45dp"
         android:layout_marginStart="30dp"

@@ -16,7 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.moutamid.budgetmanagementapp.model.Expense;
+import com.moutamid.budgetmanagementapp.model.Income;
 
 import java.util.Calendar;
 
@@ -25,7 +25,7 @@ public class AddExpenseActivity extends AppCompatActivity {
     private EditText editTextExpenseAmount;
     private Spinner spinnerExpenseCategory;
     private EditText editTextExpenseDate;
-    private EditText editTextExpenseDescription;
+//    private EditText editTextExpenseDescription;
     private Button buttonSaveExpense;
 
     private DatabaseReference databaseReference;
@@ -39,7 +39,7 @@ public class AddExpenseActivity extends AppCompatActivity {
         editTextExpenseAmount = findViewById(R.id.editTextExpenseAmount);
         spinnerExpenseCategory = findViewById(R.id.spinnerExpenseCategory);
         editTextExpenseDate = findViewById(R.id.editTextExpenseDate);
-        editTextExpenseDescription = findViewById(R.id.editTextExpenseDescription);
+//        editTextExpenseDescription = findViewById(R.id.editTextExpenseDescription);
         buttonSaveExpense = findViewById(R.id.buttonSaveExpense);
 
         // Initialize Firebase Database reference
@@ -89,7 +89,7 @@ public class AddExpenseActivity extends AppCompatActivity {
         String amount = editTextExpenseAmount.getText().toString().trim();
         String category = spinnerExpenseCategory.getSelectedItem().toString();
         String date = editTextExpenseDate.getText().toString().trim();
-        String description = editTextExpenseDescription.getText().toString().trim();
+//        String description = editTextExpenseDescription.getText().toString().trim();
 
         if (amount.isEmpty() || date.isEmpty() || category.equals("Select Category")) {
             Toast.makeText(this, "Please fill in all the required fields", Toast.LENGTH_SHORT).show();
@@ -97,7 +97,7 @@ public class AddExpenseActivity extends AppCompatActivity {
         }
 
         // Create an Expense object
-        Expense expense = new Expense(amount, category, date, description);
+        Income expense = new Income(amount, category, date);
 
         // Save the expense object to Firebase Database
         String expenseId = databaseReference.push().getKey();
@@ -108,7 +108,7 @@ public class AddExpenseActivity extends AppCompatActivity {
         // Clear the form fields
         editTextExpenseAmount.setText("");
         editTextExpenseDate.setText("");
-        editTextExpenseDescription.setText("");
+//        editTextExpenseDescription.setText("");
         spinnerExpenseCategory.setSelection(0);
     }
 

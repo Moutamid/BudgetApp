@@ -151,7 +151,7 @@
     <string name="tap_here_to_add_money_to_your_wallet">Tap here to add money to your wallet</string>
     <string name="tap_here_to_view_transaction_history_to_see_how_much_you_get_and_spend">Tap here to view transaction history to see how much you get and spend</string>
     <string name="tap_here_to_view_planned_payments_for_future_goals">Tap here to view planned payments for future goals</string>
-    <string name="_90_goals_achieved">90%\n Goals Achieved</string>
+    <string name="_90_goals_achieved">Goals Achieved</string>
 
 
 </resources>
